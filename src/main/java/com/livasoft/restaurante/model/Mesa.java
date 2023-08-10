@@ -3,69 +3,91 @@ package com.livasoft.restaurante.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "mesa")
 public class Mesa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idMesa",nullable=false)
-    Integer idMesa;
-    @Column(name = "nombre", nullable = false, length = 50,unique = true)
-    String nombre;
-    @Column(name = "estadoMesa", nullable = false, length = 50)
-    String estadoMesa;
-    @Column(name = "fechaRegistro")
-    LocalDate fecha_registro;
-    @Column(name = "fechaModifica")
-    LocalDate fecha_modifica;
+    @Column(name = "id_mesa",nullable=false)
+    private Integer id_mesa;
+    @Column(name = "descripcion", nullable = false, length = 50,unique = true)
+    private String descripcion;
+    @Column(name = "estado_mesa", nullable = false, length = 50)
+    private String estado_mesa;
+    @Column(name = "cant_pers",nullable=false)
+    private Integer cant_pers;
+    @Column(name = "piso", nullable = false)
+    private Integer piso;
+    @Column(name = "fecha_registro")
+    private LocalDate fecha_registro;
+    @Column(name = "fecha_actualiza")
+    private LocalDate fecha_modifica;
     @Column(name = "estado")
-    Boolean estado;
+    private Boolean estado;
 
     public Mesa() {
-
     }
 
-    public Mesa(Integer idMesa, String nombre, String estadoMesa, LocalDate fecha_registro, LocalDate fecha_Modifica, Boolean estado) {
-        this.idMesa = idMesa;
-        this.nombre = nombre;
-        this.estadoMesa = estadoMesa;
+    public Mesa(String descripcion, String estado_mesa, Integer cant_pers, Integer piso, LocalDate fecha_registro, LocalDate fecha_modifica, Boolean estado) {
+        this.descripcion = descripcion;
+        this.estado_mesa = estado_mesa;
+        this.cant_pers = cant_pers;
+        this.piso = piso;
         this.fecha_registro = fecha_registro;
-        this.fecha_modifica = fecha_Modifica;
+        this.fecha_modifica = fecha_modifica;
         this.estado = estado;
     }
 
-    public Mesa(String nombre, String estadoMesa, LocalDate fecha_registro, LocalDate fecha_Modifica, Boolean estado) {
-        this.nombre = nombre;
-        this.estadoMesa = estadoMesa;
+    public Mesa(Integer id_mesa, String descripcion, String estado_mesa, Integer cant_pers, Integer piso, LocalDate fecha_registro, LocalDate fecha_modifica, Boolean estado) {
+        this.id_mesa = id_mesa;
+        this.descripcion = descripcion;
+        this.estado_mesa = estado_mesa;
+        this.cant_pers = cant_pers;
+        this.piso = piso;
         this.fecha_registro = fecha_registro;
-        this.fecha_modifica = fecha_Modifica;
+        this.fecha_modifica = fecha_modifica;
         this.estado = estado;
     }
 
-    public Integer getIdMesa() {
-        return idMesa;
+    public Integer getId_mesa() {
+        return id_mesa;
     }
 
-    public void setIdMesa(Integer idMesa) {
-        this.idMesa = idMesa;
+    public void setId_mesa(Integer id_mesa) {
+        this.id_mesa = id_mesa;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public String getEstadoMesa() {
-        return estadoMesa;
+    public String getEstado_mesa() {
+        return estado_mesa;
     }
 
-    public void setEstadoMesa(String estadoMesa) {
-        this.estadoMesa = estadoMesa;
+    public void setEstado_mesa(String estado_mesa) {
+        this.estado_mesa = estado_mesa;
+    }
+
+    public Integer getCant_pers() {
+        return cant_pers;
+    }
+
+    public void setCant_pers(Integer cant_pers) {
+        this.cant_pers = cant_pers;
+    }
+
+    public Integer getPiso() {
+        return piso;
+    }
+
+    public void setPiso(Integer piso) {
+        this.piso = piso;
     }
 
     public LocalDate getFecha_registro() {
@@ -76,12 +98,12 @@ public class Mesa {
         this.fecha_registro = fecha_registro;
     }
 
-    public LocalDate getFecha_Modifica() {
+    public LocalDate getFecha_modifica() {
         return fecha_modifica;
     }
 
-    public void setFecha_Modifica(LocalDate fecha_Modifica) {
-        this.fecha_modifica = fecha_Modifica;
+    public void setFecha_modifica(LocalDate fecha_modifica) {
+        this.fecha_modifica = fecha_modifica;
     }
 
     public Boolean getEstado() {

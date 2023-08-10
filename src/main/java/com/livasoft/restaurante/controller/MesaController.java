@@ -1,30 +1,39 @@
 package com.livasoft.restaurante.controller;
 
 
-import com.livasoft.restaurante.service.MesaService;
+import com.livasoft.restaurante.service.MesaServiceImpl;
 import com.livasoft.restaurante.model.Mesa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "api/v1/mesas")
+@RequestMapping("api/v1/mesas")
 public class MesaController {
-    private final MesaService mesaService;
-
     @Autowired
-    public MesaController(MesaService mesaService) {
-        this.mesaService = mesaService;
-    }
+    private MesaServiceImpl mesaService;
 
     @GetMapping
-    public  List<Mesa> getMesas(){
-        return this.mesaService.getMesas();
+    public List<Mesa> listarMesas(){
+        return this.mesaService.listarMesas();
     }
-    @PostMapping
-    public void saveMesa(@RequestBody Mesa mesa){
-        this.mesaService.newMesa(mesa);
+    @GetMapping(value="/{id}")
+    public Optional<Mesa> listaPorId(@PathVariable("id") Integer id){
+        return this.mesaService.listarPorId(id);
+    }
+    @PostMapping(consumes = "application/json",produces = "application/json")
+    public Mesa registrarMesa(@RequestBody Mesa mesa){
+        return this.mesaService.registrarMesa(mesa);
+    }
+    @PutMapping(consumes = "application/json",produces = "application/json")
+    public Mesa actualizarMesa(@RequestBody Mesa mesa){
+        return this.mesaService.actualizarMesa(mesa);
+    }
+    @DeleteMapping(value="/{id}")
+    public void eliminarMesa(@PathVariable("id") Integer id){
+        this.mesaService.eliminarMesa(id);
     }
 
 }

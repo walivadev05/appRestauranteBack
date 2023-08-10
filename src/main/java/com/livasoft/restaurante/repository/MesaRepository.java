@@ -8,5 +8,4 @@ import java.util.Optional;
 
 @Repository
 public interface MesaRepository extends JpaRepository<Mesa,Integer> {
-    //Optional<Mesa> findMesaByName(String nombre);
 }
